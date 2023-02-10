@@ -1,5 +1,8 @@
 import React from "react";
+import { GameContext } from "../Context";
 export default function Form(props){
+  const {gameState,setGameState} = React.useContext(GameContext)
+
     const stylingObject = {
       form: {
         backgroundColor: props.color,
@@ -7,7 +10,7 @@ export default function Form(props){
       }
     }
     return(
-    <form style={stylingObject.form}>
+    <form>
     <div className="item">
       {/*Drop Down*/}
       <label htmlFor='range'>Rounds:</label>
@@ -20,7 +23,7 @@ export default function Form(props){
       onChange={props.handleChange}
       />
       </div>
-      <button>Start game</button>
+      <button type="submit" onClick={props.handleSubmit}>Start game</button>
     </form>
     )
   }
