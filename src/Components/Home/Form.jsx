@@ -1,7 +1,7 @@
 import React from "react";
 import { GameContext } from "../Context";
 export default function Form(props){
-  const {gameState,setGameState} = React.useContext(GameContext)
+  const {gameState,setGameState,rounds,setRounds} = React.useContext(GameContext)
 
     const stylingObject = {
       form: {
@@ -12,13 +12,17 @@ export default function Form(props){
     return(
     <form>
     <div className="item">
-      {/*Drop Down*/}
+      <select name="" id="" onChange={props.handleColorModel} value={props.colorModel}>
+        <option value="rgb">RGB Model</option>
+        <option value="hex">Hex Model</option>
+        <option value="hsl">HSL Model</option>
+      </select>
       <label htmlFor='range'>Rounds:</label>
       <input
       id='range'
       type="range"
       min="3"
-      defaultValue='5'
+      defaultValue={rounds}
       max="10"
       onChange={props.handleChange}
       />

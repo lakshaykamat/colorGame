@@ -1,14 +1,14 @@
 import React from "react";
 import { GameContext } from "../Context";
 export default function Option(prop) {
-  const {gameState,setGameState,rounds,setRounds} = React.useContext(GameContext)
-  console.log(rounds)
+  const {gameState,setGameState,rounds,setRounds,colorModel,setColorModel} = React.useContext(GameContext)
+  console.log("ROUNDS"+rounds)
     function checkAns(e) {
-      const options = e.target.innerHTML;
-      if (prop.correctOption === options) {
+      const usrOptions = e.target.innerHTML;
+      if (prop.correctOption === usrOptions) {
         console.log(e.target.innerHTML);
         setRounds((prevRound => prevRound -1))
-        if(rounds==0){
+        if(rounds==1){
           setGameState("endscreen")
         }
       }
