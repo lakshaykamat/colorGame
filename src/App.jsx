@@ -38,7 +38,7 @@ export default function App() {
     setGameState("game");
   }
   return (
-    <div className={`${tailwindStyle.App.Container} ${darkMode && tailwindStyle.App.Dark}`}>
+    <div className={darkMode ? tailwindStyle.App.Dark : tailwindStyle.App.Container}>
       <div 
       className={tailwindStyle.App.toogleIcon}
       onClick={handleDarkMode}

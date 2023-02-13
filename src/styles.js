@@ -11,7 +11,7 @@ export const tailwindStyle = {
         Container:" bg-slate-300 font-[Poppins] flex flex-col justify-center h-[100vh] align-center outline",
         toogleIcon: " absolute top-[15px] right-[15px] cursor-pointer",
         helpIcon: "fixed bottom-[15px] right-[15px] cursor-pointer z-10",
-        Dark:"bg-slate-800 text-white"
+        Dark:"bg-slate-800 text-white font-[Poppins] flex flex-col justify-center h-[100vh] align-center"
     },
     Game: {
         Container: "m-3 flex flex-col justify-center items-center", 

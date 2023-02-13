@@ -36,7 +36,7 @@ export default function Form(props) {
       <div className={tailwindStyle.form.section}>
         {console.log(darkMode)}
         <button
-        className={`${darkMode ? tailwindStyle.form.buttonDark : tailwindStyle.form.button}`} 
+        className={darkMode ? tailwindStyle.form.buttonDark : tailwindStyle.form.button}
         onClick={props.handleSubmit}>Start game
         </button>
       </div>
