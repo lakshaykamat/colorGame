@@ -30,7 +30,6 @@ export default function Form(props) {
           value={props.colorModel}>
           <option value="rgb">RGB Model</option>
           <option value="hex">Hex Model</option>
-          <option value="hsl">HSL Model</option>
         </select>
       </div>
 
