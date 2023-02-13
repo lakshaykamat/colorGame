@@ -14,7 +14,7 @@ export default function Game(prop) {
     score,
     setScore
   } = React.useContext(GameContext)
-
+  const [roundCount,setRoundCount] = React.useState(1)
   function createColor(){
     if(colorModel=='rgb'){
       const rgbValue = [];
@@ -39,14 +39,24 @@ export default function Game(prop) {
     setScore((prevScore => prevScore+10))
   }
   function decrementScore(){
-    setScore((prevScore => prevScore-10))
+    if(score!=0){
+      setScore((prevScore => prevScore-10))
+    }
   }
+  console.log(roundCount,rounds)
+    function decrementRounds(){
+     setRoundCount((prevRound => prevRound+1))
+     console.log(roundCount)
+      if(roundCount == rounds){
+        setGameState("endscreen")
+      }
+    }
   return (
     <>
     <div className={tailwindStyle.Game.Container}>
       <div className={tailwindStyle.Game.textContainer}>
       <h1 className={tailwindStyle.Game.score}>Score {score}</h1>
-      <h1 className={tailwindStyle.Game.rounds}>Rounds {rounds}</h1>
+      <h1 className={tailwindStyle.Game.rounds}>Rounds {roundCount}</h1>
       </div>
       <h1 className={tailwindStyle.Game.title}>Guess the Color</h1>
       <Question question={newQuestion} />
@@ -54,6 +64,7 @@ export default function Game(prop) {
       correctOption={newQuestion}
       incrementScore={incrementScore}
       decrementScore={decrementScore}
+      decrementRounds={decrementRounds}
       options={options} />
     </div>
     </>
