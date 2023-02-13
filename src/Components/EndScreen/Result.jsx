@@ -3,10 +3,7 @@ import { GameContext } from '../Context'
 import { tailwindStyle } from '../../styles'
 export default function Result(){
     const {
-        gameState,
         setGameState,
-        rounds,
-        colorModel,
         score,
         setScore
       } = React.useContext(GameContext)

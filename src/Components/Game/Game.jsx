@@ -1,20 +1,17 @@
 import Option from "./Option";
 import Question from "./Question";
-import React from "react";
+import {useContext,useState} from "react";
 import { GameContext } from "../Context";
 import { tailwindStyle } from "../../styles";
 export default function Game(prop) {
   const {
-    gameState,
     setGameState,
     rounds,
-    setRounds,
     colorModel,
-    setColorModel,
     score,
     setScore
-  } = React.useContext(GameContext)
-  const [roundCount,setRoundCount] = React.useState(1)
+  } = useContext(GameContext)
+  const [roundCount,setRoundCount] = useState(1)
   function createColor(){
     if(colorModel=='rgb'){
       const rgbValue = [];
@@ -25,7 +22,7 @@ export default function Game(prop) {
         rgbStr = `rgb(${rgbValue[0]}, ${rgbValue[1]}, ${rgbValue[2]})`;
         return rgbStr;
     }else{
-      return "#"+Math.floor(Math.random()*16777215).toString(16);
+      return "#" + Math.floor(Math.random()*16777215).toString(16);
     }
   }
   function createOption(question){
@@ -33,24 +30,35 @@ export default function Game(prop) {
     array.splice(Math.floor(Math.random()*4),0,question)
     return array
   }
-  const newQuestion = createColor()
-  const options = createOption(newQuestion)
   function incrementScore(){
     setScore((prevScore => prevScore+10))
   }
-  function decrementScore(){
-    if(score!=0){
-      setScore((prevScore => prevScore-10))
+  function decrementRounds(){
+    setRoundCount((prevRound => prevRound+1))
+    if(roundCount == rounds){
+      setGameState("endscreen")
     }
   }
-  console.log(roundCount,rounds)
-    function decrementRounds(){
-     setRoundCount((prevRound => prevRound+1))
-     console.log(roundCount)
-      if(roundCount == rounds){
-        setGameState("endscreen")
-      }
-    }
+  function hexToRgb(hex) {
+    var bigint = parseInt(hex, 16);
+    var r = (bigint >> 16) & 255;
+    var g = (bigint >> 8) & 255;
+    var b = bigint & 255;
+    console.log(r,g,b)
+    const color = `rgb(${r}, ${g}, ${b})`
+    return color
+}
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  result = {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16),
+  }
+  return `rgb(${result.r}, ${result.g}, ${result.b})`
+}
+  const newQuestion = createColor()
+  const options = createOption(newQuestion)
   return (
     <>
     <div className={tailwindStyle.Game.Container}>
@@ -63,8 +71,8 @@ export default function Game(prop) {
       <Option 
       correctOption={newQuestion}
       incrementScore={incrementScore}
-      decrementScore={decrementScore}
       decrementRounds={decrementRounds}
+      hexToRgb={hexToRgb}
       options={options} />
     </div>
     </>

@@ -1,29 +1,19 @@
-import React from "react";
+import {useContext} from "react";
 import { GameContext } from "../Context";
 import { tailwindStyle } from "../../styles";
 export default function Form(props) {
-  const classes = tailwindStyle
-  const { gameState, setGameState, rounds, setRounds } =
-    React.useContext(GameContext);
+  const {darkMode, rounds} = useContext(GameContext);
 
-  const stylingObject = {
-    form: {
-      backgroundColor: props.color,
-      border: "1px solid red",
-    },
-  };
   return (
-    <form className={classes.form.formContainer}>
-      <h1 className={classes.form.heading}>Color Game</h1>
-      <div className={classes.form.section}>
-    
+    <form className={tailwindStyle.form.formContainer}>
+      <h1 className={tailwindStyle.form.heading}>Color Game</h1>
+      <div className={tailwindStyle.form.section}>
         <label htmlFor="select">Color Model</label>
         <select
-          className={classes.form.select}
+          className={tailwindStyle.form.select}
           id="select"
           onChange={props.handleColorModel}
-          value={props.colorModel}
-        >
+          value={props.colorModel}>
           <option value="rgb">RGB Model</option>
           <option value="hex">Hex Model</option>
           <option value="hsl">HSL Model</option>
@@ -31,7 +21,7 @@ export default function Form(props) {
       </div>
 
       <div 
-      className={`${classes.form.section} ${classes.form.flexBoxW}`}>
+      className={tailwindStyle.form.section}>
         <label htmlFor="range" className="mx-2">Rounds {rounds}</label>
         <input
           id="range"
@@ -43,11 +33,11 @@ export default function Form(props) {
         />
       </div>
 
-      <div className={classes.form.section}>
+      <div className={tailwindStyle.form.section}>
+        {console.log(darkMode)}
         <button
-        className={classes.form.button} 
-        onClick={props.handleSubmit}>
-          Start game
+        className={`${darkMode ? tailwindStyle.form.buttonDark : tailwindStyle.form.button}`} 
+        onClick={props.handleSubmit}>Start game
         </button>
       </div>
     </form>

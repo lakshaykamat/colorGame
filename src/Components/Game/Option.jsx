@@ -2,15 +2,12 @@ import React from "react";
 import { GameContext } from "../Context";
 import { tailwindStyle } from "../../styles";
 export default function Option(prop) {
-  const classes = tailwindStyle;
-  const {gameState,setGameState,rounds,setRounds,colorModel,setColorModel} = React.useContext(GameContext)
+  const {colorModel} = React.useContext(GameContext)
     function checkAns(e) {
       prop.decrementRounds()
       const usrOptions = e.target.style.backgroundColor;
-      if (prop.correctOption === usrOptions) {
+      if((colorModel === 'rgb' ? prop.correctOption : prop.hexToRgb(prop.correctOption)) === usrOptions){
         prop.incrementScore()
-      }else{
-        prop.decrementScore()
       }
     }
     
@@ -25,13 +22,12 @@ export default function Option(prop) {
           boxShadow: "5px 5px 12px 0px rgba(0,0,0,0.75)"
           }
         }
-        className={classes.Game.LI}>{item}
-        </li>
+        className={tailwindStyle.Game.LI}></li>
       );
     });
     return (
       <>
-        <ul className={classes.Game.UL}>{optionsJSX}</ul>
+        <ul className={tailwindStyle.Game.UL}>{optionsJSX}</ul>
       </>
     );
   }
