@@ -5,12 +5,12 @@ export const tailwindStyle = {
         select: "px-6 text-center py-2 mx-2 rounded bg-blue-300 text-black",
         heading: "text-5xl uppercase font-bold mb-5",
         section: "m-2 flex  justify-center items-center w-full",
+        helpIcon: "fixed bottom-[15px] right-[15px] cursor-pointer z-10",
         buttonDark:"bg-blue-800 py-2 px-2 uppercase font-bold text-lg text-white rounded w-full"
     },
     App: {
         Container:" bg-slate-300 font-[Poppins] flex flex-col justify-center h-[100vh] align-center outline",
-        toogleIcon: " absolute top-[15px] right-[15px] cursor-pointer",
-        helpIcon: "fixed bottom-[15px] right-[15px] cursor-pointer z-10",
+        toogleIcon: "absolute top-[15px] right-[15px] cursor-pointer",
         Dark:"bg-slate-800 text-white font-[Poppins] flex flex-col justify-center h-[100vh] align-center"
     },
     Game: {
