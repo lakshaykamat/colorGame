@@ -24,8 +24,8 @@ export const tailwindStyle = {
         LI: "w-full h-[5rem] lg:h-[15rem] my-3 mx-4 outline outline-2 rounded-md drop-shadow-2xl"
     },
     EndScreen:{
-        Container:"flex flex-col w-full max-w-sm text-center m-auto gap-3 my-10",
-        text:"text-6xl m-4",
+        Container:" text-center flex flex-col text-center sm:m-auto m-10 gap-3",
+        text:"text-5xl m-4",
         button:"bg-blue-400 py-2 px-2 uppercase font-bold text-lg text-white rounded"
     }
 }
